@@ -4,8 +4,10 @@
  * @param {string} string
  * @returns {string}
  */
-export const replaceZAndVFromString = (string) => {};
-
+export const replaceZAndVFromString = (string) => {
+             return string.replace(/[vz,]/g, '*');  
+};
+     
 /**
  * Функция должна принять 3 аргумента и все строки. Мы передаем строку,
  * вторая строка это искомое слово, третья это то слово, на которое мы должны
@@ -16,7 +18,9 @@ export const replaceZAndVFromString = (string) => {};
  * @param {string} newWord
  * @returns {string}
  */
-export const changeWord = (string, word, newWord) => {};
+export const changeWord = (string, word, newWord) => {
+    return string.replace(word, newWord);  
+};
 
 /**
  * Должна вернуть строку(1 аргумент) на обрезанную по длине(2 аргумент, число)
@@ -24,7 +28,9 @@ export const changeWord = (string, word, newWord) => {};
  * @param {number} length
  * @returns {string}
  */
-export const truncate = (string, length) => {};
+export const truncate = (string, length) => {
+    return string.slice(0, length)
+};
 
 /**
  * Принимает строку в первом аргументе, и символ во втором
@@ -37,7 +43,16 @@ export const truncate = (string, length) => {};
  * @param {string} symbol
  * @returns {number}
  */
-export const quantityOfSymbols = (string, symbol) => {};
+export const quantityOfSymbols = (string, symbol) => {
+    let result = 0;
+    let str = string.toLowerCase()
+    for(let i = 0; i <= str.length; i++) {
+        if(str[i] === symbol.toLowerCase()) {
+            result++
+        }
+    }
+    return result
+};
 
 /**
  * Принимает строку в первом аргументе, и символ во втором
@@ -54,4 +69,20 @@ export const quantityOfSymbols = (string, symbol) => {};
  * @param {string} symbol
  * @returns {number}
  */
-export const quantityOfSymbolsWithIndexOf = (string, symbol) => {};
+export const quantityOfSymbolsWithIndexOf = (string, symbol) => {
+    let count = 0;
+    let str = string.toLowerCase();
+    let smbl = symbol.toLowerCase();
+    let foundSymbol = 0;
+    while(true) {
+        let number = str.indexOf(smbl, foundSymbol) 
+        if(number === -1) {
+            break;
+        } else {
+            count++;
+            foundSymbol = number + 1;
+        }
+        }  
+        return count
+    };
+
